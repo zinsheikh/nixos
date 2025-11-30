@@ -8,6 +8,12 @@
       url = "github:noctalia-dev/noctalia-shell";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
+
+    zen-browser = {
+      url = "github:youwen5/zen-browser-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
   };
   outputs = inputs@{ self, nixpkgs, niri, ... }: {
     # replace 'joes-desktop' with your hostname here.

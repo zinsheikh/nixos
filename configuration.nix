@@ -111,6 +111,7 @@
   #  wget
   #   pkgs.niri
      pkgs.git
+     inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
