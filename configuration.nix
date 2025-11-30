@@ -7,9 +7,10 @@
 {
   imports =
     [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      ./cachix.nix
+      ./hardware-configuration.nix ./cachix.nix
     ];
+
+
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -93,6 +94,9 @@
     #  thunderbird
     ];
   };
+  
+  # adding penguin as trusted user
+  nix.settings.trusted-users = [ "root" "penguin" ];
 
   # Install firefox.
   programs.firefox.enable = true;
