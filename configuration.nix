@@ -7,7 +7,7 @@
 {
   imports =
     [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix ./cachix.nix
+      ./hardware-configuration.nix
     ];
 
 
@@ -55,7 +55,7 @@
    services.xserver.desktopManager.gnome.enable = true;
 
   #attempting to enable niri
-  # programs.niri.enable = true;
+  programs.niri.enable = true;
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -111,7 +111,6 @@
   #  wget
   #   pkgs.niri
      pkgs.git
-     pkgs.cachix
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
