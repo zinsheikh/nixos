@@ -2,7 +2,7 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
-    niri.url = "github:sodiboo/niri-flake";
+   # niri.url = "github:sodiboo/niri-flake";
 
     noctalia = {
       url = "github:noctalia-dev/noctalia-shell";
