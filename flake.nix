@@ -15,7 +15,11 @@
     };
 
   };
-  outputs = inputs@{ self, nixpkgs, niri, ... }: {
+  outputs = inputs@{ 
+   self, 
+   nixpkgs, 
+   #niri,
+  ... }: {
     # replace 'joes-desktop' with your hostname here.
     nixosConfigurations.penguin = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
