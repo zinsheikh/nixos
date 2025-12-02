@@ -1,6 +1,6 @@
 {
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
    # add unstabke.xyzpackage instead of pkgs.xyzpackage to get the unstabel version
    # dont forget to add unstable to the input parameter (its the {config, lib, pkgs, unstable, ...}: thing
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
