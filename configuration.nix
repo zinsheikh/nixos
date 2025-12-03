@@ -112,6 +112,7 @@
   #   pkgs.niri
      pkgs.git
      inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
+     pkgs.fish
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
