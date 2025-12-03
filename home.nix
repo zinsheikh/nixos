@@ -8,7 +8,7 @@
 
   home.packages = [
     pkgs.steam
-    pkgs.signal
+    pkgs.signal-desktop
   ];
 
 
