@@ -97,6 +97,9 @@
   
   # adding penguin as trusted user
   nix.settings.trusted-users = [ "root" "penguin" ];
+  
+  # enabling nix commands and flakes
+  nix.settings.experimental-features = ["nix-command" "flakes"];
 
   # Install firefox.
   programs.firefox.enable = true;
