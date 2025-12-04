@@ -114,7 +114,7 @@
      inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
      pkgs.fish
      pkgs.steam
-     pkgs.zziplib
+     pkgs.unzip
      pkgs.orca-slicer
   ];
 
