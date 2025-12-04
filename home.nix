@@ -7,7 +7,6 @@
   home.homeDirectory = "/home/penguin";
 
   home.packages = [
-    pkgs.steam
     pkgs.signal-desktop
   ];
 

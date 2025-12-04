@@ -113,6 +113,9 @@
      pkgs.git
      inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
      pkgs.fish
+     pkgs.steam
+     pkgs.zziplib
+     pkgs.orca-slicer
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
