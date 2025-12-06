@@ -118,6 +118,7 @@
      pkgs.fish
      pkgs.steam
      pkgs.orca-slicer
+     pkgs.gnomeExtensions.pop-shell
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
