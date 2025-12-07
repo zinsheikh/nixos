@@ -47,12 +47,12 @@
     LC_TIME = "de_DE.UTF-8";
   };
 
-  # Enable the X11 windowing system.
-   services.xserver.enable = true;
+  # Enable the X11 windowing system. (no longer needed for GNOME as of 25.11)
+  # services.xserver.enable = true;
 
   # Enable the GNOME Desktop Environment.
-   services.xserver.displayManager.gdm.enable = true;
-   services.xserver.desktopManager.gnome.enable = true;
+   services.displayManager.gdm.enable = true;
+   services.desktopManager.gnome.enable = true;
 
   #attempting to enable niri
   programs.niri.enable = true;
