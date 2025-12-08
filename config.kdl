@@ -621,3 +621,6 @@ binds {
     // moving the mouse or pressing any other key.
     Mod+Shift+P { power-off-monitors; }
 }
+    // enabling noctalia
+    spawn-at-startup "qs" "-c" "noctalia-shell"
+

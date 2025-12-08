@@ -118,12 +118,16 @@
   #  wget
   #   pkgs.niri
      pkgs.git
+     # zen browse is installed via a flake, thats the reason for this syntax mess
      inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
      pkgs.fish
      pkgs.steam
      pkgs.orca-slicer
      pkgs.gnomeExtensions.pop-shell
+     #yes this pkg needs to be here although niri is also being enabled in other ways in this file 
      pkgs.niri
+     #this one is a bit special because it comes from the quckshell flake
+     inputs.quickshell.packages.x86_64-linux.default
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
