@@ -10,6 +10,10 @@
       ./hardware-configuration.nix
     ];
 
+# enabling niri overlay so i can use niri flake stuff as if its in nixpkgs
+
+  nixpkgs.overlays = [ inputs.niri.overlays.niri ];
+
 
 
   # Bootloader.
@@ -119,6 +123,7 @@
      pkgs.steam
      pkgs.orca-slicer
      pkgs.gnomeExtensions.pop-shell
+     pkgs.niri
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

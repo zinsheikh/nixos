@@ -4,14 +4,20 @@
    # add unstabke.xyzpackage instead of pkgs.xyzpackage to get the unstabel version
    # dont forget to add unstable to the input parameter (its the {config, lib, pkgs, unstable, ...}: thing
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
-   # niri.url = "github:sodiboo/niri-flake";
+    niri.url = "github:sodiboo/niri-flake";
 
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
+    quickshell = {
+      url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
+
     noctalia = {
       url = "github:noctalia-dev/noctalia-shell";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
+      inputs.quickshell.follows = "quickshell"; # Use same quickshell version
     };
 
     zen-browser = {
@@ -19,12 +25,13 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+
   };
    outputs = inputs@{ 
      self, 
      nixpkgs,
      nixpkgs-unstable,
-   # niri,
+     niri,
      home-manager,
     ... }: 
     let
@@ -40,9 +47,14 @@
       specialArgs = {inherit inputs; inherit unstable;};
       modules = [ 
 	./configuration.nix 
-	./noctalia.nix
+	#./noctalia.nix
+          inputs.noctalia.nixosModules.default
+          inputs.niri.nixosModules.niri
+          {
+            nixpkgs.overlays = [niri.overlays.niri];
+          }
 
-	 home-manager.nixosModules.home-manager
+	 inputs.home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
