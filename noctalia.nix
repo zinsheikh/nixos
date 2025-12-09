@@ -1,6 +1,10 @@
-{ pkgs, inputs, ... }:
+{ 
+# pkgs,
+ inputs,
+ ... 
+}:
+
 {
-  home-manager.users.penguin = {
     # import the home manager module
     imports = [
       inputs.noctalia.homeModules.default
@@ -65,5 +69,4 @@
       # this may also be a string or a path to a JSON file,
       # but in this case must include *all* settings.
     };
-  };
 }

@@ -9,15 +9,15 @@
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-    quickshell = {
-      url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
-    };
+   # quickshell = {
+   #   url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
+   #   inputs.nixpkgs.follows = "nixpkgs-unstable";
+   # };
 
     noctalia = {
       url = "github:noctalia-dev/noctalia-shell";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
-      inputs.quickshell.follows = "quickshell"; # Use same quickshell version
+    #  inputs.quickshell.follows = "quickshell"; #this is deprecated, noctalia swiched to nixpgks quickshell
     };
 
     zen-browser = {
@@ -33,6 +33,7 @@
      nixpkgs-unstable,
      niri,
      home-manager,
+     noctalia,
     ... }: 
     let
     system = "x86_64-linux";
@@ -48,7 +49,7 @@
       modules = [ 
 	./configuration.nix 
 	#./noctalia.nix
-          inputs.noctalia.nixosModules.default
+        # inputs.noctalia.nixosModules.default
           inputs.niri.nixosModules.niri
           {
             nixpkgs.overlays = [niri.overlays.niri];
@@ -59,6 +60,7 @@
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users.penguin = ./home.nix;
+            home-manager.extraSpecialArgs = {inherit inputs;};
 
             # Optionally, use home-manager.extraSpecialArgs to pass
             # arguments to home.nix

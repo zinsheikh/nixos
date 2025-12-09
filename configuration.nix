@@ -127,7 +127,8 @@
      #yes this pkg needs to be here although niri is also being enabled in other ways in this file 
      pkgs.niri
      #this one is a bit special because it comes from the quckshell flake
-     inputs.quickshell.packages.x86_64-linux.default
+    # inputs.quickshell.packages.x86_64-linux.default
+     #noctalia uses nixpgks quickshell so the flake stuff isnt required
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
