@@ -14,8 +14,6 @@
 
   nixpkgs.overlays = [ inputs.niri.overlays.niri ];
 
-
-
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -58,8 +56,23 @@
    services.displayManager.gdm.enable = true;
    services.desktopManager.gnome.enable = true;
 
-  #attempting to enable niri
+  # this builds the pkg via the flake doue to overlay
   programs.niri.enable = true;
+
+  # systemd service for noctalia so it boots with niri
+  systemd.user.services.noctalia-shell-service = {
+  enable = true;
+  after = [ "graphical-session.target" ];
+  wantedBy = [ "graphical-session.target" ];
+  description = "Noctalia Shell Service";
+  serviceConfig = {
+    #  Type = "simple";
+      ExecStart = "noctalia-shell";
+      Restart = "on-failure";
+      RestartSec = "1";
+  };
+};
+
 
   # Configure keymap in X11
   services.xserver.xkb = {
