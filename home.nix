@@ -14,14 +14,35 @@
   xdg.configFile."niri/config.kdl".source = ./config.kdl;
   xdg.configFile."niri/config.kdl".force = true;
 
+ # all of these are recommended in the nir docs but some are redunant 
+ # and commented out due to noctalia providing those services
+
   programs.alacritty.enable = true; # Super+T in the default setting (terminal)
   programs.fuzzel.enable = true; # Super+D in the default setting (app launcher)
-  programs.swaylock.enable = true; # Super+Alt+L in the default setting (screen locker)
-  programs.waybar.enable = true; # launch on startup in the default setting (bar)
-  services.mako.enable = true; # notification daemon
+ # programs.swaylock.enable = true; # Super+Alt+L in the default setting (screen locker)
+ # programs.waybar.enable = true; # launch on startup in the default setting (bar)
+ # services.mako.enable = true; # notification daemon
   services.swayidle.enable = true; # idle management daemon
   services.polkit-gnome.enable = true; # polkit
-
+  
+  # systemd service for noctalia so it boots with niri
+  systemd.user.services.noctalia-shell-service = {
+   Unit = {
+    Description = "Noctalia Shell Service";
+    PartOf = [ "grapical-session.target" ];
+    Requisite = [ "graphical-session.target" ];
+    After = [ "graphical-session.target" ];
+   };
+   Service = {
+    ExecStart = [ "/etc/profiles/per-user/penguin/bin/noctalia-shell" ];
+    Restart = "on-failure";
+    RestartSec = "1";
+   };
+   Install = {
+    WantedBy = [ "graphical-session.target" ];
+   };
+  };
+  
   home.packages = [
     pkgs.signal-desktop
   ];

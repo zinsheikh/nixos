@@ -60,18 +60,18 @@
   programs.niri.enable = true;
 
   # systemd service for noctalia so it boots with niri
-  systemd.user.services.noctalia-shell-service = {
-  enable = true;
-  after = [ "graphical-session.target" ];
-  wantedBy = [ "graphical-session.target" ];
-  description = "Noctalia Shell Service";
-  serviceConfig = {
+#  systemd.user.services.noctalia-shell-service = {
+#  enable = true;
+#  after = [ "graphical-session.target" ];
+#  wantedBy = [ "graphical-session.target" ];
+#  description = "Noctalia Shell Service";
+#  serviceConfig = {
     #  Type = "simple";
-      ExecStart = "noctalia-shell";
-      Restart = "on-failure";
-      RestartSec = "1";
-  };
-};
+#      ExecStart = "noctalia-shell";
+#      Restart = "on-failure";
+#      RestartSec = "1";
+#  };
+#};
 
 
   # Configure keymap in X11
