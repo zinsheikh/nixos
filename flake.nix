@@ -9,6 +9,9 @@
     home-manager.url = "github:nix-community/home-manager/release-25.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
+   # CachyOS kernel for better system optimisations
+    nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel";
+
    # quickshell = {
    #   url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
    #   inputs.nixpkgs.follows = "nixpkgs-unstable";
@@ -50,6 +53,7 @@
 	./configuration.nix 
 	#./noctalia.nix
         # inputs.noctalia.nixosModules.default
+
           inputs.niri.nixosModules.niri
           {
             nixpkgs.overlays = [niri.overlays.niri];

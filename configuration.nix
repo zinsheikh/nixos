@@ -12,14 +12,17 @@
 
 # enabling niri overlay so i can use niri flake stuff as if its in nixpkgs
 
-  nixpkgs.overlays = [ inputs.niri.overlays.niri ];
+  nixpkgs.overlays = [ inputs.niri.overlays.niri inputs.nix-cachyos-kernel.overlays.default ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  # Use latest kernel.
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  # Use latest mainline kernel.
+  # boot.kernelPackages = pkgs.linuxPackages_latest;
+
+  # CachyOS kernel for better optimisation
+  boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-latest;
 
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
