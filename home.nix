@@ -9,12 +9,15 @@
   # all the noctalia home-manager config options are in here 
   imports = [
    ./noctalia.nix
+   ./niri.nix
   ];
 
-  xdg.configFile."niri/config.kdl".source = ./config.kdl;
-  xdg.configFile."niri/config.kdl".force = true;
+#  xdg.configFile."niri/config.kdl".source = ./config.kdl;
+#  xdg.configFile."niri/config.kdl".force = true;
 
- # all of these are recommended in the nir docs but some are redunant 
+ # programs.niri.config = "./config.kdl";
+
+ # all of these are recommended in the niri docs but some are redunant 
  # and commented out due to noctalia providing those services
 
   programs.alacritty.enable = true; # Super+T in the default setting (terminal)
