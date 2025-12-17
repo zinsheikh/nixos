@@ -23,6 +23,14 @@
     #  inputs.quickshell.follows = "quickshell"; #this is deprecated, noctalia swiched to nixpgks quickshell
     };
 
+    nvf = {
+      url = "github:NotAShelf/nvf";
+      # You can override the input nixpkgs to follow your system's
+      # instance of nixpkgs. This is safe to do as nvf does not depend
+      # on a binary cache.
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     zen-browser = {
       url = "github:youwen5/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -37,7 +45,8 @@
      niri,
      home-manager,
      noctalia,
-    ... }: 
+     nvf,
+     ... }: 
     let
     system = "x86_64-linux";
     unstable = import nixpkgs-unstable {
@@ -53,6 +62,9 @@
 	./configuration.nix 
 	#./noctalia.nix
         # inputs.noctalia.nixosModules.default
+         
+         # this is already declared in configuration.nix by importing nvf.nix (this is the file where the declaration actually is)
+         # inputs.nvf.nixosModules.default
 
           inputs.niri.nixosModules.niri
           {

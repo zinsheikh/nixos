@@ -19,7 +19,8 @@
         bar = {
           density = "compact";
           position = "right";
-          showCapsule = false;
+          showCapsule = true;
+          floatingBar = true;
           widgets = {
             left = [
               {
@@ -56,14 +57,14 @@
             ];
           };
         };
-        colorSchemes.predefinedScheme = "Monochrome";
+        colorSchemes.matugenScheme = "Fidelity";
         general = {
           avatarImage = "/home/drfoobar/.face";
           radiusRatio = 0.2;
         };
         location = {
-          monthBeforeDay = true;
-          name = "Marseille, France";
+          monthBeforeDay = false;
+          name = "Ringe, Denmark";
         };
       };
       # this may also be a string or a path to a JSON file,
