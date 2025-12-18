@@ -169,6 +169,10 @@
      #this one is a bit special because it comes from the quckshell flake
     # inputs.quickshell.packages.x86_64-linux.default
      #noctalia uses nixpgks quickshell so the flake stuff isnt required
+     pkgs.cava
+     #audio visualiser
+     pkgs.brillo
+     #brightness control
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

@@ -19,7 +19,7 @@
       {
         "${mod}+Shift+Slash".action = show-hotkey-overlay;
         "${mod}+A".action.spawn = ["noctalia-shell" "ipc" "call" "launcher" "toggle"];
-        "${mod}+Return".action.spawn = ["alacritty"];
+        "${mod}+Return".action.spawn = ["alacritty" "-e" "fish"];
         "Super+Alt+L".action.spawn = ["noctalia-shell" "ipc" "call" "sessionMenu" "lockAndSuspend"];
  
         XF86AudioRaiseVolume.action = set-volume "5%+";
