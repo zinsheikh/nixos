@@ -173,6 +173,7 @@
      #audio visualiser
      pkgs.brillo
      #brightness control
+     pkgs.vcv-rack
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
