@@ -119,7 +119,7 @@
     alsa.support32Bit = true;
     pulse.enable = true;
     # If you want to use JACK applications, uncomment this
-    #jack.enable = true;
+    jack.enable = true;
 
     # use the example session manager (no others are packaged yet so this is enabled by default,
     # no need to redefine it in your config for now)
@@ -148,6 +148,16 @@
   # Install firefox.
   programs.firefox.enable = true;
 
+  #installing steam with necessary open firewall ports for remote play 
+    programs = {
+    steam = {
+      enable = true;
+      remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
+     # dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
+     # localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
+    };
+   };
+
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
@@ -157,11 +167,12 @@
   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
   #  wget
   #   pkgs.niri
+     
      pkgs.git
      # zen browse is installed via a flake, thats the reason for this syntax mess
      inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
      pkgs.fish
-     pkgs.steam
+     pkgs.xwayland-satellite
      pkgs.orca-slicer
      pkgs.gnomeExtensions.pop-shell
      #yes this pkg needs to be here although niri is also being enabled in other ways in this file 
@@ -173,7 +184,8 @@
      #audio visualiser
      pkgs.brillo
      #brightness control
-     pkgs.vcv-rack
+     pkgs.cardinal
+     pkgs.jack2
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
