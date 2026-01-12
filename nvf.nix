@@ -17,6 +17,7 @@
         enable = true;
       };
       vim.languages.nix.lsp.enable = true;
+      vim.languages.zig.lsp.enable = true;
     };
   };
 }

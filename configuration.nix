@@ -9,6 +9,7 @@
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ./nvf.nix
+      ./wireless.nix
     ];
 
 # enabling niri overlay so i can use niri flake stuff as if its in nixpkgs
