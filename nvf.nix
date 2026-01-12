@@ -13,11 +13,13 @@
     settings = {
       vim.viAlias = false;
       vim.vimAlias = true;
+      vim.languages.nix.enable = true;
+      vim.languages.zig.enable = true;
+      vim.syntaxHighlighting =true;
+
       vim.lsp = {
         enable = true;
       };
-      vim.languages.nix.lsp.enable = true;
-      vim.languages.zig.lsp.enable = true;
     };
   };
 }

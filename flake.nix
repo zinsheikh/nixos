@@ -1,7 +1,7 @@
 {
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
-   # add unstabke.xyzpackage instead of pkgs.xyzpackage to get the unstabel version
+   # add unstable.xyzpackage instead of pkgs.xyzpackage to get the unstabel version
    # dont forget to add unstable to the input parameter (its the {config, lib, pkgs, unstable, ...}: thing
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     niri.url = "github:sodiboo/niri-flake";
@@ -22,6 +22,8 @@
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     #  inputs.quickshell.follows = "quickshell"; #this is deprecated, noctalia swiched to nixpgks quickshell
     };
+    
+    zig.url = "github:mitchellh/zig-overlay";
 
     nvf = {
       url = "github:NotAShelf/nvf";
@@ -46,6 +48,7 @@
      home-manager,
      noctalia,
      nvf,
+     zig,
      ... }: 
     let
     system = "x86_64-linux";

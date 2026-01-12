@@ -14,7 +14,7 @@
 
 # enabling niri overlay so i can use niri flake stuff as if its in nixpkgs
 
-  nixpkgs.overlays = [ inputs.niri.overlays.niri inputs.nix-cachyos-kernel.overlays.default ];
+  nixpkgs.overlays = [ inputs.niri.overlays.niri inputs.nix-cachyos-kernel.overlays.default inputs.zig.overlays.default];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -61,8 +61,9 @@
    services.displayManager.gdm.enable = true;
    services.desktopManager.gnome.enable = true;
 
-  # this builds the pkg via the flake doue to overlay
+  # this builds the pkg via the flake due to overlay
   programs.niri.enable = true;
+
 
   # systemd service for noctalia so it boots with niri
 #  systemd.user.services.noctalia-shell-service = {
@@ -168,7 +169,7 @@
   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
   #  wget
   #   pkgs.niri
-     
+     inputs.zig.packages.x86_64-linux.master
      pkgs.git
      # zen browse is installed via a flake, thats the reason for this syntax mess
      inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
