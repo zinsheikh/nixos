@@ -188,6 +188,7 @@
      #brightness control
      pkgs.cardinal
      pkgs.jack2
+     pkgs.element-web
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
