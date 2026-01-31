@@ -12,7 +12,14 @@
   ];
   programs.niri.settings = {
     prefer-no-csd = true;
-    layout.shadow.enable = true;
+    layout = {
+    shadow.enable = true;
+    };
+    outputs.eDP-1.mode = {
+    width = 2256;
+    height = 1504;
+    refresh = 60.0;
+    };
     input = {
       focus-follows-mouse = {
         enable = true;
@@ -26,8 +33,13 @@
 
     window-rules = [
       {
-        matches = [ { app-id = "authentication-agent-1|pwvucontrol"; } ];
-        open-floating = true;
+        clip-to-geometry = true; 
+        geometry-corner-radius = {
+        bottom-left = 5.0;
+        bottom-right = 5.0;
+        top-left = 5.0;
+        top-right = 5.0;
+        };
       }
   ];
  };
