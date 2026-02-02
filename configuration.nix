@@ -10,6 +10,7 @@
       ./hardware-configuration.nix
       ./nvf.nix
       ./wireless.nix
+      ./hjem.nix 
     ];
 
 # enabling niri overlay so i can use niri flake stuff as if its in nixpkgs
@@ -162,6 +163,11 @@
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
+ # 25.05 (or later)
+
+  fonts.packages = with pkgs; [
+     nerd-fonts.jetbrains-mono
+  ];
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -173,10 +179,11 @@
      pkgs.git
      # zen browse is installed via a flake, thats the reason for this syntax mess
      inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
-     pkgs.fish
      pkgs.xwayland-satellite
      pkgs.orca-slicer
      pkgs.gnomeExtensions.pop-shell
+     pkgs.fish
+     pkgs.starship
      #yes this pkg needs to be here although niri is also being enabled in other ways in this file 
      pkgs.niri
      #this one is a bit special because it comes from the quckshell flake

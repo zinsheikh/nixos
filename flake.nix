@@ -9,6 +9,11 @@
     home-manager.url = "github:nix-community/home-manager/release-25.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
+    hjem = {
+      url = "github:feel-co/hjem";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
    # CachyOS kernel for better system optimisations
     nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel";
 
@@ -49,6 +54,7 @@
      noctalia,
      nvf,
      zig,
+     hjem,
      ... }: 
     let
     system = "x86_64-linux";
@@ -74,7 +80,9 @@
             nixpkgs.overlays = [niri.overlays.niri];
           }
 
-	 inputs.home-manager.nixosModules.home-manager
+          inputs.hjem.nixosModules.default
+
+	  inputs.home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;

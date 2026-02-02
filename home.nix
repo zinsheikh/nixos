@@ -1,4 +1,4 @@
-{ config, pkgs, inputs, ... }:
+{ config, pkgs, inputs, lib, ... }:
 
 {
   # Home Manager needs a bit of information about you and the
@@ -27,24 +27,8 @@
  # services.mako.enable = true; # notification daemon
   services.swayidle.enable = true; # idle management daemon
   services.polkit-gnome.enable = true; # polkit
-  
-  # systemd service for noctalia so it boots with niri
-  systemd.user.services.noctalia-shell-service = {
-   Unit = {
-    Description = "Noctalia Shell Service";
-    PartOf = [ "grapical-session.target" ];
-    Requisite = [ "graphical-session.target" ];
-    After = [ "graphical-session.target" ];
-   };
-   Service = {
-    ExecStart = [ "/etc/profiles/per-user/penguin/bin/noctalia-shell" ];
-    Restart = "on-failure";
-    RestartSec = "1";
-   };
-   Install = {
-    WantedBy = [ "graphical-session.target" ];
-   };
-  };
+ 
+ programs.noctalia-shell.systemd.enable = true;
   
   home.packages = [
     pkgs.signal-desktop
