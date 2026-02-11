@@ -15,6 +15,7 @@
       vim.vimAlias = true;
       vim.languages.nix.enable = true;
       vim.languages.zig.enable = true;
+      vim.languages.go.enable = true;
       vim.syntaxHighlighting = true;
       vim.autocomplete.blink-cmp.enable = true;
 

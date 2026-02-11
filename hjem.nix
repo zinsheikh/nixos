@@ -1,6 +1,15 @@
 { config, lib, pkgs, inputs, ... }:
 
 {
+programs.dconf.profiles.user.databases = [
+ {
+  settings = 
+  { "org/gnome/desktop/interface" = {
+   gtk-theme = "adw-gtk3"; 
+   };
+  };
+ } 
+];
 hjem.users = {
     penguin = {
       # enable = true; # This is not necessary, since enable is 'true' by default

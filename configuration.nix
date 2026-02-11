@@ -178,6 +178,28 @@
      inputs.zig.packages.x86_64-linux.master
      pkgs.git
      # zen browse is installed via a flake, thats the reason for this syntax mess
+     #main exo dependency
+     (inputs.ignis.packages.${pkgs.system}.default.override {
+      enableAudioService = true;
+      enableNetworkService = true;
+      enableRecorderService = true;
+      enableBluetoothService = true;
+      useDartSass = true;
+      useGrassSass = true;
+      extraPackages = [
+        # ...
+      ];
+     })
+     #wallpaper dependencies for exo
+     pkgs.matugen 
+     pkgs.swww
+     #adwaita gtk3 port for exo
+     pkgs.adw-gtk3
+     #sass implementation for exo
+     pkgs.dart-sass
+     #gnome blutooth is a exo dependency so itll get installed in case i nuke gnome
+     pkgs.gnome-bluetooth
+
      inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
      pkgs.xwayland-satellite
      pkgs.orca-slicer

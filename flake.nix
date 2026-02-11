@@ -22,6 +22,12 @@
    #   inputs.nixpkgs.follows = "nixpkgs-unstable";
    # };
 
+#main exo-shell dependecy
+    ignis = {
+      url = "github:ignis-sh/ignis";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     noctalia = {
       url = "github:noctalia-dev/noctalia-shell";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
@@ -55,6 +61,7 @@
      nvf,
      zig,
      hjem,
+     ignis,
      ... }: 
     let
     system = "x86_64-linux";
