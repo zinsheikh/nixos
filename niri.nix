@@ -15,6 +15,7 @@
     layout = {
     shadow.enable = true;
     };
+    spawn-at-startup = [{command = ["swaync"];}];
     outputs.eDP-1.mode = {
     width = 2256;
     height = 1504;

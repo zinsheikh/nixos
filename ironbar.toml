@@ -1,0 +1,206 @@
+[monitors]
+
+[[monitors.eDP-1]]
+position = "right"
+margins.top = 4
+margins.bottom = 4
+margins.left = 4
+margins.right = 4
+popup_gap = 4
+
+#brightness
+#[[start]]
+#type = "brightness"
+#format = "{percentage}%"
+#smooth_scroll_speed = 0.5
+
+#[start.mode]
+#type = "systemd"
+#subsystem = "backlight"
+#name = "amdgpu_bl1"
+
+#[start.profiles.low]
+#when = 25
+#format = "{percentage}%"
+#icon_label = ""
+
+#[start.profiles.high]
+#when = 100
+#format = "{percentage}%"
+#icon_label = ""
+
+#volume
+[[start]]
+type = "volume"
+format = "{icon} {percentage}%"
+sink_slider_orientation = "vertical"
+max_volume = 100
+truncate = "middle"
+
+[start.icons]
+volume_high = "󰕾"
+volume_medium = "󰖀"
+volume_low = "󰕿"
+muted = "󰝟"
+
+#battery
+[[start]]
+type = "battery"
+format = "{percentage}%"
+
+[start.thresholds]
+warning = 20
+critical = 5
+
+#notifications
+[[start]]
+type = "notifications"
+show_count = true
+
+[start.icons]
+closed_none = "󰍥"
+closed_some = "󱥂"
+closed_dnd = "󱅯"
+open_none = "󰍡"
+open_some = "󱥁"
+open_dnd = "󱅮"
+
+#clock
+[[start]]
+type = "clock"
+format = "%d/%m/%Y %H:%M"
+
+#workspaces
+[[center]]
+type = "workspaces"
+all_monitors = false
+favorites = ["1", "2", "3"]
+
+[center.name_map]
+1 = ""
+2 = "󰈙"
+3 = "󰍻"
+
+#launcher
+[[end]]
+type = "launcher"
+favorites = ["zen", "alacritty"]
+show_names = false
+show_icons = true
+reversed = false
+
+
+[[monitors.eDP-1]]
+position = "left"
+margins.top = 4
+margins.bottom = 4
+margins.left = 4
+margins.right = 4
+popup_gap = 4
+
+#powermenu
+[[start]]
+class = 'power-menu'
+tooltip = '''Up: {{30000:uptime -p | cut -d ' ' -f2-}}'''
+type = 'custom'
+
+[[start.bar]]
+label = ''
+name = 'power-btn'
+on_click = 'popup:toggle'
+type = 'button'
+
+[[start.popup]]
+orientation = 'vertical'
+type = 'box'
+
+[[start.popup.widgets]]
+label = 'Power menu'
+name = 'header'
+type = 'label'
+
+[[start.popup.widgets]]
+type = 'box'
+
+[[start.popup.widgets.widgets]]
+class = 'power-btn'
+label = '''<span font-size='40pt'></span>'''
+on_click = '!shutdown now'
+type = 'button'
+
+[[start.popup.widgets.widgets]]
+class = 'power-btn'
+label = '''<span font-size='40pt'></span>'''
+on_click = '!reboot'
+type = 'button'
+
+[[start.popup.widgets]]
+label = '''Uptime: {{30000:uptime -p | cut -d ' ' -f2-}}'''
+name = 'uptime'
+type = 'label'
+
+#bluetooth
+[[start]]
+type = "bluetooth"
+icon_size = 32
+
+[start.format]
+not_found = ""
+disabled = "󰂲"
+enabled = ""
+connected = " {device_alias}"
+connected_battery = " {device_alias} • {device_battery_percent}%"
+
+[start.popup]
+max_height.devices = 5
+header = " Enable Bluetooth"
+disabled = "{adapter_status}"
+
+[start.popup.device]
+header = "{device_alias}"
+header_battery = "{device_alias}"
+footer = "{device_status}"
+footer_battery = "{device_status} • Battery {device_battery_percent}%"
+
+[start.adapter_status]
+not_found = "No Bluetooth adapters found"
+enabled = "Bluetooth enabled"
+enabling = "Enabling Bluetooth..."
+disabled = "Bluetooth disabled"
+disabling = "Disabling Bluetooth..."
+
+[start.device_status]
+connected = "Connected"
+connecting = "Connecting..."
+disconnected = "Disconnect"
+disconnecting = "Disconnecting..."
+
+#network
+[[start]]
+type = "network_manager"
+icon_size = 24
+types_blacklist = ["loopback", "bridge"]
+
+[start.profiles.wired_disconnected]
+when = { type = "wired", state = "disconnected" }
+icon = "icon:network-wired-disconnected-symbolic"
+
+#music
+[[start]]
+type = "music"
+player_type = "mpd"
+format = "{title} / {artist}"
+music_dir = "/home/penguin/Music"
+truncate = "end"
+
+[start.icons]
+play = ""
+pause = ""
+
+#focused-window
+[[end]]
+type = "focused"
+show_icon = true
+show_title = true
+icon_size = 32
+truncate = "end"

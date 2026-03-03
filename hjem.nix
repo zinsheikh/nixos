@@ -22,6 +22,8 @@ hjem.users = {
        ".config/starship.toml".source = ./starship.toml;
        ".config/alacritty/alacritty.toml".source = ./alacritty.toml;
        ".config/fish/config.fish".source = ./config.fish;
+       ".config/ironbar/config.yaml".source = ./ironbar.yaml;
+       ".config/ironbar/style.css".source = ./ironbar.css;
       };
     };
   };

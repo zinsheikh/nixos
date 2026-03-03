@@ -1,0 +1,158 @@
+monitors:
+  eDP-1:
+    #BAR 1
+    - position: "right" 
+      height: 20
+      margin.top: 5
+      margin.bottom: 5
+      margin.right: 5
+      start:
+      
+      #VOLUME
+      - type: "volume"
+        format: "{icon} {percentage}%"
+        sink_slider_orientation: "vertical"
+        max_volume: 100
+        truncate: "middle"
+        icons:
+         volume_high: "󰕾"
+         volume_medium: "󰖀"
+         volume_low: "󰕿"
+         muted: "󰝟"
+
+      #BATTERY
+      - type: "battery"
+        format: "{percentage}%"
+        profiles:
+         warning: 20
+         critical:
+          when:
+           percent: 5
+           charging: false
+          format: "[LOW] {percentage}%"
+
+      #NOTIFICATIONS
+      - type: notifications
+        show_count: true
+        icons:
+          closed_none: 󰍥
+          closed_some: 󱥂
+          closed_dnd: 󱅯
+          open_none: 󰍡
+          open_some: 󱥁
+          open_dnd: 󱅮
+
+      #CLOCK
+      - type: "clock"
+        format: "%H:%M"
+        orientation: "v"
+
+      center: 
+      - type: "workspaces"
+    
+      end:
+      - type: "launcher"
+        favorites:
+          - zen
+          - alacritty
+        show_names: false
+        show_icons: true
+        reversed: false
+
+     #BAR 2
+    - position: "left"
+      height: 20
+      margin.top: 5
+      margin.bottom: 5
+      margin.left: 5
+      start: 
+
+      #POWERMENU
+      - bar:
+        - label: 
+          name: power-btn
+          on_click: popup:toggle
+          type: button
+        class: power-menu
+        popup:
+        - orientation: vertical
+          type: box
+          widgets:
+          - label: Power menu
+            name: header
+            type: label
+          - type: box
+            widgets:
+            - class: power-btn
+              label: <span font-size='40pt'></span>
+              on_click: '!shutdown now'
+              type: button
+            - class: power-btn
+              label: <span font-size='40pt'></span>
+              on_click: '!reboot'
+              type: button
+          - label: 'Uptime: {{30000:uptime -p | cut -d '' '' -f2-}}'
+            name: uptime
+            type: label
+        tooltip: 'Up: {{30000:uptime -p | cut -d '' '' -f2-}}'
+        type: custom
+
+      #BLUETOOTH
+      - type: bluetooth
+        icon_size: 32
+        format:
+          not_found: ""
+          disabled: " Off"
+          enabled: " On"
+          connected: " {device_alias}"
+          connected_battery: " {device_alias} • {device_battery_percent}%"
+        popup:
+          max_height:
+            devices: 5
+          header: " Enable Bluetooth"
+          disabled: "{adapter_status}"
+          device:
+            header: "{device_alias}"
+            header_battery: "{device_alias}"
+            footer: "{device_status}"
+            footer_battery: "{device_status} • Battery {device_battery_percent}%"
+        adapter_status:
+          not_found: "No Bluetooth adapters found"
+          enabled: "Bluetooth enabled"
+          enabling: "Enabling Bluetooth..."
+          disabled: "Bluetooth disabled"
+          disabling: "Disabling Bluetooth..."
+        device_status:
+          connected: "Connected"
+          connecting: "Connecting..."
+          disconnected: "Disconnect"
+          disconnecting: "Disconnecting..."     
+
+      #NETWORK
+      - type: "network_manager"
+        icon_size: 24
+        types_blacklist:
+           - loopback
+           - bridge
+        profiles:
+          wired_disconnected:
+            when:
+               type: "wired"
+               state: "disconnected"
+            icon: "icon:network-wired-disconnected-symbolic"
+
+      - type: "music"
+        player_type: "mpd"
+        format: "{title} / {artist}"
+        truncate: "end"
+        icons:
+          play: ""
+          pause: ""
+        music_dir: "/home/penguin/Music"
+   
+    - end:
+      - type: "focused"
+        show_icon: true
+        show_title: false
+        icon_size: 32
+        truncate: "end"

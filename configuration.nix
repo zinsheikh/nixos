@@ -11,6 +11,7 @@
       ./nvf.nix
       ./wireless.nix
       ./hjem.nix 
+      ./music.nix
     ];
 
 # enabling niri overlay so i can use niri flake stuff as if its in nixpkgs
@@ -151,6 +152,7 @@
   # Install firefox.
   programs.firefox.enable = true;
 
+
   #installing steam with necessary open firewall ports for remote play 
     programs = {
     steam = {
@@ -174,32 +176,12 @@
   environment.systemPackages = with pkgs; [
   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
   #  wget
-  #   pkgs.niri
      inputs.zig.packages.x86_64-linux.master
      pkgs.git
      # zen browse is installed via a flake, thats the reason for this syntax mess
-     #main exo dependency
-     (inputs.ignis.packages.${pkgs.system}.default.override {
-      enableAudioService = true;
-      enableNetworkService = true;
-      enableRecorderService = true;
-      enableBluetoothService = true;
-      useDartSass = true;
-      useGrassSass = true;
-      extraPackages = [
-        # ...
-      ];
-     })
-     #wallpaper dependencies for exo
-     pkgs.matugen 
-     pkgs.swww
-     #adwaita gtk3 port for exo
-     pkgs.adw-gtk3
-     #sass implementation for exo
-     pkgs.dart-sass
-     #gnome blutooth is a exo dependency so itll get installed in case i nuke gnome
-     pkgs.gnome-bluetooth
-
+     unstable.ironbar
+     pkgs.swaynotificationcenter
+     
      inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
      pkgs.xwayland-satellite
      pkgs.orca-slicer
@@ -215,6 +197,12 @@
      #audio visualiser
      pkgs.brillo
      #brightness control
+
+     pkgs.jetbrains.webstorm
+     pkgs.google-chrome
+
+     pkgs.prismlauncher
+
      pkgs.cardinal
      pkgs.jack2
      pkgs.element-web
