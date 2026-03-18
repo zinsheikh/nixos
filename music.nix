@@ -1,6 +1,8 @@
 {pkgs, ...}:
 
 {
+ musnix.enable = true;
+
   environment.systemPackages = with pkgs; [
     qjackctl
     zrythm

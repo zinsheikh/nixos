@@ -44,6 +44,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    musnix.url = "github:musnix/musnix";
+
     zen-browser = {
       url = "github:youwen5/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -62,6 +64,7 @@
      zig,
      hjem,
      ignis,
+     musnix,
      ... }: 
     let
     system = "x86_64-linux";
@@ -99,7 +102,7 @@
             # Optionally, use home-manager.extraSpecialArgs to pass
             # arguments to home.nix
           }
-
+        inputs.musnix.nixosModules.musnix
       ];
     };
   };

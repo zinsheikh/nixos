@@ -149,6 +149,20 @@
   # enabling nix commands and flakes
   nix.settings.experimental-features = ["nix-command" "flakes"];
 
+ # Enable common container config files in /etc/containers
+  virtualisation.containers.enable = true;
+  virtualisation = {
+    podman = {
+      enable = true;
+
+      # Create a `docker` alias for podman, to use it as a drop-in replacement
+      dockerCompat = true;
+
+      # Required for containers under podman-compose to be able to talk to each other.
+      defaultNetwork.settings.dns_enabled = true;
+    };
+  };
+
   # Install firefox.
   programs.firefox.enable = true;
 
@@ -193,6 +207,10 @@
      #this one is a bit special because it comes from the quckshell flake
     # inputs.quickshell.packages.x86_64-linux.default
      #noctalia uses nixpgks quickshell so the flake stuff isnt required
+     dive # look into docker image layers
+     podman-tui # status of containers in the terminal
+     docker-compose # start group of containers for dev
+    #podman-compose # start group of containers for dev
      pkgs.cava
      #audio visualiser
      pkgs.brillo
