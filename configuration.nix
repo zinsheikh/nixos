@@ -197,7 +197,7 @@
      unstable.ironbar
      pkgs.swaynotificationcenter
 
-     pkgs.wl-cipboard
+     pkgs.wl-clipboard
      
      inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
      pkgs.xwayland-satellite
