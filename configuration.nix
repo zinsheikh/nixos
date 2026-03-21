@@ -196,6 +196,8 @@
      # zen browse is installed via a flake, thats the reason for this syntax mess
      unstable.ironbar
      pkgs.swaynotificationcenter
+
+     pkgs.wl-cipboard
      
      inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
      pkgs.xwayland-satellite
