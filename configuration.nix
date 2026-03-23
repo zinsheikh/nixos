@@ -219,6 +219,8 @@
      brillo
      #brightness control
 
+     obsidian
+     freecad
      jetbrains.webstorm
      google-chrome
 
