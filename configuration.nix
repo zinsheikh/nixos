@@ -192,21 +192,21 @@
   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
   #  wget
      inputs.zig.packages.x86_64-linux.master
-     pkgs.git
+     git
      # zen browse is installed via a flake, thats the reason for this syntax mess
      unstable.ironbar
-     pkgs.swaynotificationcenter
+     swaynotificationcenter
 
-     pkgs.wl-clipboard
+     wl-clipboard
      
      inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
-     pkgs.xwayland-satellite
-     pkgs.orca-slicer
-     pkgs.gnomeExtensions.pop-shell
-     pkgs.fish
-     pkgs.starship
+     xwayland-satellite
+     orca-slicer
+     gnomeExtensions.pop-shell
+     fish
+     starship
      #yes this pkg needs to be here although niri is also being enabled in other ways in this file 
-     pkgs.niri
+     niri
      #this one is a bit special because it comes from the quckshell flake
     # inputs.quickshell.packages.x86_64-linux.default
      #noctalia uses nixpgks quickshell so the flake stuff isnt required
@@ -214,19 +214,19 @@
      podman-tui # status of containers in the terminal
      docker-compose # start group of containers for dev
     #podman-compose # start group of containers for dev
-     pkgs.cava
+     cava
      #audio visualiser
-     pkgs.brillo
+     brillo
      #brightness control
 
-     pkgs.jetbrains.webstorm
-     pkgs.google-chrome
+     jetbrains.webstorm
+     google-chrome
 
-     pkgs.prismlauncher
+     prismlauncher
 
-     pkgs.cardinal
-     pkgs.jack2
-     pkgs.element-web
+     cardinal
+     jack2
+     element-web
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
