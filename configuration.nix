@@ -225,6 +225,7 @@
      google-chrome
 
      prismlauncher
+     javaPackages.compiler.temurin-bin.jre-25
 
      cardinal
      jack2
