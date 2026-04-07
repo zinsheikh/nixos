@@ -208,8 +208,11 @@
      starship
      niri #yes this pkg needs to be here although niri is also being enabled in other ways in this file 
      
+     mpd #music player daemon, needed by rmpc
+     unstable.rmpc #the terminal music player of my dreams! (using unstable cus stable is deprecated)
+
      #this one is a bit special because it comes from the quckshell flake
-    # inputs.quickshell.packages.x86_64-linux.default
+     #inputs.quickshell.packages.x86_64-linux.default
      #noctalia uses nixpgks quickshell so the flake stuff isnt required
      dive # look into docker image layers
      podman-tui # status of containers in the terminal
