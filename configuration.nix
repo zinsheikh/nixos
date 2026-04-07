@@ -65,7 +65,8 @@
 
   # this builds the pkg via the flake due to overlay
   programs.niri.enable = true;
-
+  # this uses nixpkgs version of niri as a binary cache 
+  programs.niri.package = pkgs.niri;
 
   # systemd service for noctalia so it boots with niri
 #  systemd.user.services.noctalia-shell-service = {
@@ -205,8 +206,8 @@
      gnomeExtensions.pop-shell
      fish
      starship
-     #yes this pkg needs to be here although niri is also being enabled in other ways in this file 
-     niri
+     niri #yes this pkg needs to be here although niri is also being enabled in other ways in this file 
+     
      #this one is a bit special because it comes from the quckshell flake
     # inputs.quickshell.packages.x86_64-linux.default
      #noctalia uses nixpgks quickshell so the flake stuff isnt required
